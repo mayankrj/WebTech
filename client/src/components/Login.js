@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import Axios from "axios";
 import "../App.css";
 
@@ -8,6 +9,10 @@ export default function Login() {
 
     const [loginStatus, setLoginStatus] = useState("");
 
+    sendLoginStatus = () => {
+        this.props.parentCallback(loginStatus);
+    }
+
     const login = () => {
         Axios.post("http://localhost:3001/login", {
             username: username,
@@ -15,10 +20,13 @@ export default function Login() {
         }).then((response) => {
             if (response.data.message) {
                 alert('wrong password');
-                setLoginStatus(response.data.message);
+                setLoginStatus(false);
+                sendLoginStatus();
+
             }
             else {
-                setLoginStatus(response.data[0].username);
+                setLoginStatus(true);
+                sendLoginStatus();
             }
         })
 
@@ -43,7 +51,7 @@ export default function Login() {
                 />
                 <button onClick={login}> Login </button>
                 <br />
-                <button > Register </button>
+                <Link to='/register' ><button > Register </button></Link>
                 <h1>{loginStatus}</h1>
             </div>
         </div>

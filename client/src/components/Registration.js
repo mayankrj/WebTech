@@ -35,6 +35,9 @@ export default function Registration() {
                     }}
                 />
                 <button onClick={register}>Register</button>
+                <p>You have registered successfully now click on Login button below: </p>
+                <Link to='/login' ><button value="login">Login</button></Link>
+
             </div>
         </div>
     );
