@@ -1,12 +1,17 @@
 
 import Axios from 'axios';
-import React, { useEffect, useState } from "react";
+import React,{Component, useEffect, useState } from "react";
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route ,Switch,Link,Redirect} from "react-router-dom";
 import Registration from './components/Registration';
+import Home from './components/Home';
+import About from './components/About';
 import Login from './components/Login';
-import {Home,About,Login,DisplayProducts,ProductDetails,NavBar,Cart} from './components';
+import DisplayProducts from './components/DisplayProducts';
+import NavBar  from './components/NavBar';
 import {DataProvider} from './components/Context';
+import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
 
 class App extends Component{
   
@@ -39,7 +44,7 @@ class App extends Component{
               )} />
               <Route path='/register' component={Registration} />
               <Route path='/products/:id' component={ProductDetails} />
-              <Route path='/cart' component={Cart} exact strict render={() => (
+              <Route path='/cart' exact strict render={() => (
                 this.state.isLoggedIn ? (<Cart />) : (<Redirect to='/login' />)
               )} /> 
             </Switch>

@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import Axios from "axios";
 import "../App.css";
 
-export default function Login() {
+export default function Login(props) {
     const [username, setUserName] = useState("");
     const [password, setpassword] = useState("");
 
     const [loginStatus, setLoginStatus] = useState("");
 
-    sendLoginStatus = () => {
-        this.props.parentCallback(loginStatus);
+    const sendLoginStatus = () => {
+       props.parentCallback(loginStatus);
+        
     }
 
     const login = () => {
