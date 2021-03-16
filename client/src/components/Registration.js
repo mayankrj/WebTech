@@ -29,7 +29,7 @@ export default function Registration() {
                 <label>Password</label>
                 <input
                     type="password"
-                    placeholder="Password..."
+                    placeholder="Password123..."
                     onChange={(e) => {
                         setpasswordReq(e.target.value);
                     }}
