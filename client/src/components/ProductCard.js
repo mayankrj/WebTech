@@ -11,13 +11,14 @@ export default class ProductCard extends Component {
                 <DataConsumer>
                     {(value) => (
                         <div className="card">
-                            <img src={src} alt={title} />
+                            <img className="cardsdisplay" src={src}  alt={title} />
                             <h3>{title}</h3>
-                            <span>Price: ${price}</span>
+                            <span>Price: ₹ {price}</span>
+                            <br/>
                             <Link to={`/products/${id}`}>
-                                <button value="View details" onClick={() => {value.handleDetails(id)}}>View details</button>
+                                <button class="btn btn-success" value="View details" onClick={() => {value.handleDetails(id)}}>View details</button>
                             </Link>
-
+<br/>
                         </div> 
                     )}
                 </DataConsumer>   

@@ -8,13 +8,16 @@ class DisplayProducts extends Component {
         return (
             <div className="container">
                 <div>
-                    <h3>Products page</h3>
+                    <br/>
+                    <h1>Products Page</h1>
+                    <br/>
+                    <br/>
                 </div>
                 <div className="row">
                     <DataConsumer>
                             {(value)=>{
                                 return value.products.map(product => {
-                                    return <ProductCard key={product.id} product={product} />
+                                    return <div className="col-3 my-3"><ProductCard key={product.id} product={product} /></div>
                                 })
                             }}
                     </DataConsumer>

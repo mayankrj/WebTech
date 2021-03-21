@@ -1,6 +1,6 @@
 
-import Axios from 'axios';
-import React,{Component, useEffect, useState } from "react";
+
+import React,{Component } from "react";
 import './App.css';
 import { BrowserRouter as Router, Route ,Switch,Link,Redirect} from "react-router-dom";
 import Registration from './components/Registration';
@@ -30,15 +30,16 @@ class App extends Component{
           
           <NavBar />
 
-          <input type="button" value={this.state.isLoggedIn ? 'log out' : 'log in'} onClick={this.loginHandle} />
+          
             <Switch>
               <Route exact path="/">
                 <Home />
               </Route>
               <Route path="/about" component={About} />
-              <Route path="/login">
-                <Login parentCallback={this.loginHandleCallback} />
-              </Route>
+              <Route path="/login" exact strict render={() => (
+                this.state.isLoggedIn ? (<Redirect to='/products' />): ( <Login parentCallback={this.loginHandleCallback} />) 
+              )} />
+             
               <Route path="/products" exact strict render={() => (
                 this.state.isLoggedIn ? (<DisplayProducts />) : (<Redirect to='/login' />)
               )} />
